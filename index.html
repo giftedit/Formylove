@@ -485,11 +485,12 @@
             runSceneEffects(current);
             clearTimeout(autoTimer);
 
-            // MUSIC START
-            if (music) {
-                music.volume = 0.9;
-                music.play().catch(() => {});
-            }
+            // MUSIC START KARO (SIRF EK BAAR, LOOP BAND)
+if (music && !music.playing) {
+    music.volume = 0.9;
+    music.play().catch(() => {});
+    music.loop = false;  // LOOP BAND
+}
 
             if (current < scenes.length - 1) {
                 autoTimer = setTimeout(() => goTo(current + 1), sceneDurations[current]);
